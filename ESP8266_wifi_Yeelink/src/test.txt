@@ -1,0 +1,54 @@
+print("Execute code")
+tmr.alarm(3, 30000, 1, function()
+print("start")
+conn=net.createConnection(net.TCP, 0)
+conn:connect(80,"42.96.164.52")  -- 42.96.164.52
+conn("connection", function(conn) topost() end)
+conn("disconnection", function(conn, pl) print("disconnection") conn:close() end)
+conn:on("receive", function(conn, pl) conn:close() print(pl) end )
+
+
+conn:send("GET /v1.0/device/344067/sensor/382603/datapoints HTTP/1.1\r\n"
+.."Host: api.yeelink.net\r\n"
+.."Content-Type: text/html; charset=UTF-8\r\n"
+.."Content-Length: ".."0".."\r\n" -- set 0
+.."Cache-Control: no-cache\r\n\r\n"
+.."".."\r\n")
+
+-- conn:on("send", function(conn,c) print(c) end )
+print("end")
+end)
+
+
+
+
+function sendData()
+
+-- conection to thingspeak.com
+print("Sending data to thingspeak.com")
+conn=net.createConnection(net.TCP, 0) 
+conn:on("receive", function(conn, payload) print(payload) end)
+-- api.thingspeak.com 184.106.153.149
+conn:connect(80,'42.96.164.52') 
+conn:send("GET /v1.0/device/344067/sensor/382603/datapoints HTTP/1.1\r\n") 
+conn:send("Host: api.yeelink.net\r\n") 
+conn:send("Accept: */*\r\n") 
+conn:send("Content-Type: text/html; charset=UTF-8\r\n")
+conn:send("Cache-Control: no-cache\r\n\r\n")
+conn:send("\r\n")
+conn:on("sent",function(conn)
+                      print("Closing connection")
+                      conn:close()
+                  end)
+conn:on("disconnection", function(conn)
+          print("Got disconnection...")
+  end)
+end
+
+
+
+   conn=net.createConnection(net.TCP, 0)
+    conn:on("receive", function(conn, payload) print(payload) end)
+    conn:connect(80, "115.239.210.27")
+    conn:send("GET / HTTP/1.1\r\nHost: http://api.yeelink.net/v1.0/device/344067/sensor/382603/datapoints\r\n"
+        .. "Connection: keep-alive\r\nAccept: */*\r\n\r\n")
