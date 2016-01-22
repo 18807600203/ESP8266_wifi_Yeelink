@@ -32,17 +32,14 @@ function setup_server(aps)
     	    end
         	local _GET = {}
         	if (vars ~= nil)then
-            	--for k, v in pairs(_GET) do
-				for k, v in string.gmatch(vars, "([^&=]+)=([^&=]+)") do
+				      for k, v in string.gmatch(vars, "([^&=]+)=([^&=]+)") do
                 	_GET[k] = convet1(v)
-                    print(k,v)
             	end
 	        end
               
     	    if (_GET.psw ~= nil and _GET.ap ~= nil) then
     	    	client:send("Saving data..");
         		file.open("config.lua", "w")
-				print(_GET.ap .. _GET.psw)
 				file.writeline('ssid = "' .. _GET.ap .. '"')
 				file.writeline('password = "' .. _GET.psw .. '"')
     			file.close()
