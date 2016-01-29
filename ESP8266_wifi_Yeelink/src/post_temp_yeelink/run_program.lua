@@ -36,6 +36,8 @@ function sendTemp(t)
         else
           print("Temp_Date Sent"..t)
         end
+      postData = nil
+      conn = nil
       end)
     end
 end
@@ -61,6 +63,8 @@ function sendRH(h)
         else
           print("RH_Date Sent"..h)
         end
+      postData = nil
+      conn = nil
       end)
     end
 end
