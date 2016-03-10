@@ -15,10 +15,8 @@ end)
 function setup_server(aps)
 	print("Setting up Wifi AP")
 	wifi.setmode(wifi.SOFTAP)
-	local wifi_mac = wifi.ap.getmac()
-	local macstr = string.gsub(string.sub(wifi_mac,10,-1),':','')
 	cfg={}
-	cfg.ssid = ssid .. macstr
+	cfg.ssid = ssid
 	cfg.pwd  = psw
 	wifi.ap.config(cfg)
 

@@ -7,8 +7,8 @@
   ssid = "ESP8266"
   psw  = "12345678"
   device_id = "344466"
-  sensor_id_temp = "382909"
-  sersor_id_RH = "382910"
+  sensor_id_temp = "383207"
+  sersor_id_RH = "383208"
   api_key = "37f8a3d7507ecef73b3c13b8119d657c"
   led_pin = 1
   rset_pin = 2

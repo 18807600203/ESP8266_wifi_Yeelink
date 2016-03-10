@@ -4,13 +4,13 @@
    Relay ctr PIN = 3 
 --]]
  
-  ssid = "ESP_"
+  ssid = "ESP8266"
   psw  = "12345678"
   device_id = "344067"
-  sensor_id = "382603"
+  sensor_id_temp = "383205"
   api_key = "37f8a3d7507ecef73b3c13b8119d657c"
   led_pin = 1
-  rset_pin = 8
+  rset_pin = 2
   ctr_pin = 3
   gpio.mode(3, gpio.OUTPUT)
   gpio.write(3, gpio.LOW)  
